@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Hind Siliguri', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@media print {
+  @page {
+    margin: 8mm;
+    size: auto;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    height: auto !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide all elements on page */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* Display only the printable elements */
+  #printable-invoice,
+  #printable-invoice *,
+  #printable-report,
+  #printable-report * {
+    visibility: visible !important;
+  }
+
+  #printable-invoice,
+  #printable-report {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+    z-index: 9999999 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  #invoice-print-modal,
+  #report-modal {
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    position: static !important;
+    padding: 0 !important;
+  }
+}

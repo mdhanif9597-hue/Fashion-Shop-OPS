@@ -1,0 +1,6 @@
+{
+  "name": "POS & Inventory System",
+  "description": "POS, stock management, customer due tracking, invoice generator, and Google Sheets sync for shop owners.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

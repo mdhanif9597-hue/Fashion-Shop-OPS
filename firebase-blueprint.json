@@ -1,0 +1,102 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Stock inventory product item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "productName": { "type": "string" },
+        "category": { "type": "string" },
+        "supplier": { "type": "string" },
+        "qty": { "type": "number" },
+        "purchasePrice": { "type": "number" },
+        "salePrice": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "productName", "qty", "purchasePrice", "salePrice"]
+    },
+    "Sale": {
+      "title": "Sale",
+      "description": "Customer invoice and sale transaction",
+      "type": "object",
+      "properties": {
+        "invoiceNo": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "discount": { "type": "number" },
+        "total": { "type": "number" },
+        "paid": { "type": "number" },
+        "due": { "type": "number" },
+        "date": { "type": "string" },
+        "seller": { "type": "string" }
+      },
+      "required": ["invoiceNo", "total", "paid", "date"]
+    },
+    "Expense": {
+      "title": "Expense",
+      "description": "Daily store expense record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "expenseHead": { "type": "string" },
+        "amount": { "type": "number" },
+        "paidTo": { "type": "string" },
+        "date": { "type": "string" },
+        "remarks": { "type": "string" }
+      },
+      "required": ["expenseHead", "amount", "date"]
+    },
+    "DuePayment": {
+      "title": "DuePayment",
+      "description": "Customer due collection record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "paidAmount": { "type": "number" },
+        "date": { "type": "string" },
+        "remarks": { "type": "string" }
+      },
+      "required": ["customerName", "paidAmount", "date"]
+    },
+    "User": {
+      "title": "User",
+      "description": "Store operator account (Admin or Cashier/Staff)",
+      "type": "object",
+      "properties": {
+        "username": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["username", "role"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Inventory products collection"
+    },
+    "/sales/{saleId}": {
+      "schema": "Sale",
+      "description": "Sales invoices collection"
+    },
+    "/expenses/{expenseId}": {
+      "schema": "Expense",
+      "description": "Store daily expenses"
+    },
+    "/duePayments/{paymentId}": {
+      "schema": "DuePayment",
+      "description": "Due collection transactions"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Staff and admin accounts"
+    }
+  }
+}
